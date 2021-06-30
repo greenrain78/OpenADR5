@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <h1>equipments_info</h1>
+    <table border="1">
+        <th>siteId</th>
+        <th>perfId</th>
+        <th>eqpCode</th>
+        <th>eqpName</th>
+        <th>eqpType</th>
+        <th>created_at</th>
+        {% for equip in equipments_list %}
+            <tr><!-- 첫번째 줄 시작 -->
+                <td>{{equip.siteId}}</td>
+                <td>{{equip.perfId}}</td>
+                <td>{{equip.eqpCode}}</td>
+                <td>{{equip.eqpName}}</td>
+                <td>{{equip.eqpType}}</td>
+                <td>{{equip.created_at}}</td>
+            </tr><!-- 첫번째 줄 끝 -->
+        {% endfor %}
+    </table>
+
+</ul>
+</body>
+</html>
