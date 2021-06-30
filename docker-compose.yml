@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    container_name: backend
+    build:
+      context: BackEnd
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./BackEnd:/project
+    environment:
+      TZ: Asia/Seoul
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
