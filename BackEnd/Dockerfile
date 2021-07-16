@@ -8,16 +8,13 @@ RUN mkdir /project
 WORKDIR /project
 
 # 파이썬 라이브러리 설치
-RUN apt-get update && apt-get install -y cron
-
 COPY requirements.txt /project
 RUN pip install -r requirements.txt
 
-# 스캐줄러 설치
+# DB 업데이트
 COPY . /project
-RUN python manage.py crontab add
-RUN python manage.py crontab show
-
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 
 # -u 옵션으로 버퍼없이 즉시 출력
 CMD ["python", "manage.py", "runserver", "0:8000"]
